@@ -6,7 +6,7 @@ pipeline {
 				withAWS(region:'ap-south-1', credentials:'aws-static') {
 					sh '''
 						eksctl create cluster \
-						--name capstonecluster \
+						--name deploymentCluster \
 						--version 1.13 \
 						--nodegroup-name standard-workers \
 						--node-type t2.small \

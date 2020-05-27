@@ -6,20 +6,21 @@ pipeline {
 				withAWS(region:'ap-south-1', credentials:'aws-static') {
 					sh '''
 						var=`aws eks describe-cluster --name deploymentCluster`
-						echo var
-						eksctl create cluster \
-						--name deploymentCluster \
-						--version 1.13 \
-						--nodegroup-name standard-workers \
-						--node-type t2.small \
-						--nodes 2 \
-						--nodes-min 1 \
-						--nodes-max 3 \
-						--node-ami auto \
-						--region ap-south-1 \
-						--zones ap-south-1a \
-						--zones ap-south-1b \
-						--zones ap-south-1c
+						if [[ $var == *"(ResourceNotFoundException)"*]]; then
+							eksctl create cluster \
+							--name deploymentCluster \
+							--version 1.13 \
+							--nodegroup-name standard-workers \
+							--node-type t2.small \
+							--nodes 2 \
+							--nodes-min 1 \
+							--nodes-max 3 \
+							--node-ami auto \
+							--region ap-south-1 \
+							--zones ap-south-1a \
+							--zones ap-south-1b \
+							--zones ap-south-1c
+						fi
 					'''
 				}
 			}

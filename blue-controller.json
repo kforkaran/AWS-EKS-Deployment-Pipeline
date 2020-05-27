@@ -22,7 +22,7 @@
         "containers": [
           {
             "name": "blue",
-            "image": "karan1999/deploymentPipeline",
+            "image": "karan1999/deployment-pipeline",
             "ports": [
               {
                 "name": "http-server",

@@ -16,9 +16,9 @@
 - Wait until user instruction
 - Update the service to Green
 
-## Requirements
+## Dependencies
 
 - Jenkins
-- Blue Ocean and Pipline-AWS Plugin in Jenkins
+- Blue Ocean and Pipeline-AWS Plugin in Jenkins
 - Docker and Kubectl
 - AWS Cli

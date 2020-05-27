@@ -5,6 +5,8 @@ pipeline {
 			steps {
 				withAWS(region:'ap-south-1', credentials:'aws-static') {
 					sh '''
+						var=`aws eks describe-cluster --name deploymentCluster`
+						echo var
 						eksctl create cluster \
 						--name deploymentCluster \
 						--version 1.13 \
@@ -13,7 +15,7 @@ pipeline {
 						--nodes 2 \
 						--nodes-min 1 \
 						--nodes-max 3 \
-						--nMAGE_REPO_CREDENTIALS_USRode-ami auto \
+						--node-ami auto \
 						--region ap-south-1 \
 						--zones ap-south-1a \
 						--zones ap-south-1b \
